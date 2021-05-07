@@ -15,24 +15,11 @@ export const ChatPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const messagesRef = firebase.database().ref("messages");
-    messagesRef.on("value", (data) => {
-      dispatch(chatReciveMessages(data.val()));
-    });
+    //TO DO Implementar leitura de mensagens em tempo real do firebase.
   }, [dispatch]);
 
   const handleSendMenssage = (message) => {
-    const messagesListRef = firebase.database().ref("messages");
-    const newMessageRef = messagesListRef.push();
-    const messagePayload = {
-      name: user?.name,
-      userPhoto: user?.photoUrl,
-      email: user?.email,
-      text: message,
-    };
-
-    newMessageRef.set(messagePayload);
-    console.log(user);
+    //TO DO Implementar envio de mensagem para o realtime database do firebase.
   };
 
   const handleClickLogout = () => {
