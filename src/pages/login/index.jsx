@@ -6,7 +6,7 @@ import {
   Subtitle,
   ButtonsContainer,
 } from "./styles";
-import { FaGoogle, FaFacebookF } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
 import { useToasts } from "react-toast-notifications";
 import firebase from "firebase/app";
 import { useDispatch } from "react-redux";
@@ -69,9 +69,9 @@ export const LoginPage = () => {
       });
   };
 
-  const handleFacebookLogin = () => {
-    // todo implementar login com facebook pelo firebase
-  };
+  // const handleFacebookLogin = () => {
+  //   // todo implementar login com facebook pelo firebase
+  // };
 
   return (
     <Container>

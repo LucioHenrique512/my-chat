@@ -1,18 +1,8 @@
 import { Button } from "@material-ui/core";
 import { UserPicture } from "../../../../components";
-import {
-  Container,
-  Header,
-  UserItem,
-  UserList,
-  MainUser,
-  NoUsers,
-} from "./styles";
+import { Container, Header, UserList, MainUser } from "./styles";
 
 export const OnlineUsersList = ({ handleClickLogout, user }) => {
-  const users = [
-    { name: "Some user", avatar_url: "https://i.pravatar.cc/200" },
-  ];
   return (
     <Container>
       <Header>

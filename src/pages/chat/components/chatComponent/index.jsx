@@ -21,7 +21,7 @@ export const ChatComponent = ({ handleSendMessage, messages, ownUser }) => {
         }
       );
     }
-  });
+  }, [messageContainerRef]);
 
   const handleSubmitForm = (event) => {
     event.preventDefault();

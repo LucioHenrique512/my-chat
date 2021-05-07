@@ -19,7 +19,7 @@ export const ChatPage = () => {
     messagesRef.on("value", (data) => {
       dispatch(chatReciveMessages(data.val()));
     });
-  }, []);
+  }, [dispatch]);
 
   const handleSendMenssage = (message) => {
     const messagesListRef = firebase.database().ref("messages");
