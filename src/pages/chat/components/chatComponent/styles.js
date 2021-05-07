@@ -14,6 +14,7 @@ export const MessagesContainer = styled.div`
   width: 100%;
   overflow-y: scroll;
   padding: 0px 50px;
+  scroll-behavior: smooth;
 `;
 
 export const FormContainer = styled.form`

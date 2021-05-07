@@ -10,17 +10,26 @@ import { FaGoogle, FaFacebookF } from "react-icons/fa";
 import { useToasts } from "react-toast-notifications";
 import firebase from "firebase/app";
 import { useDispatch } from "react-redux";
-import { sessionLoginUser } from "../../redux/session/actions";
+import {
+  sessionLogoutUser,
+  sessionLoginUser,
+} from "../../redux/session/actions";
 
 export const LoginPage = () => {
   const { addToast } = useToasts();
 
   const dispatch = useDispatch();
 
-  // const setUserOnline = (user) => {
-  //   const userListRef = firebase.database().ref("users");
-  //   const
-  // };
+  const setUserOnline = (user) => {
+    const userListRef = firebase.database().ref("users");
+    const newUserRef = userListRef.push();
+
+    return newUserRef.set({
+      name: user.name,
+      email: user.email,
+      photoUrl: user.photoUrl,
+    });
+  };
 
   const handleGoogleLogin = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -42,13 +51,21 @@ export const LoginPage = () => {
           token,
         };
 
-        //console.log(sessionPayload);
+        setUserOnline(sessionPayload)
+          .then(() => {
+            addToast(`Seja bem vindo ${sessionPayload.name}`, {
+              appearance: "success",
+            });
+            dispatch(sessionLoginUser(sessionPayload));
+          })
+          .catch((error) => {
+            addToast(`Algo deu errado com o login :/`, {
+              appearance: "error",
+            });
 
-        addToast(`Seja bem vindo ${sessionPayload.name}`, {
-          appearance: "success",
-        });
-
-        dispatch(sessionLoginUser(sessionPayload));
+            console.error(error);
+            dispatch(sessionLogoutUser());
+          });
       });
   };
 
@@ -72,14 +89,14 @@ export const LoginPage = () => {
           >
             Google
           </Button>
-          <Button
+          {/* <Button
             color="primary"
             variant="contained"
             startIcon={<FaFacebookF />}
             onClick={handleFacebookLogin}
           >
             Facebook
-          </Button>
+          </Button> */}
         </ButtonsContainer>
       </CardContainer>
     </Container>

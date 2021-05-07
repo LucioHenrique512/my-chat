@@ -28,7 +28,7 @@ export const OnlineUsersList = ({ handleClickLogout, user }) => {
         </MainUser>
       </Header>
       <UserList>
-        {users.length !== 0 ? (
+        {/* {users.length !== 0 ? (
           users.map(({ name, avatar_url }, index) => (
             <UserItem key={index}>
               <UserPicture picture_url={avatar_url} />
@@ -41,7 +41,7 @@ export const OnlineUsersList = ({ handleClickLogout, user }) => {
           <NoUsers>
             <h3>Nehum usuário logado.</h3>
           </NoUsers>
-        )}
+        )} */}
       </UserList>
     </Container>
   );
