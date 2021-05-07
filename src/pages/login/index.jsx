@@ -14,7 +14,7 @@ export const LoginPage = () => {
 
   const handleGoogleLogin = () => {
     // todo implementar login com google pelo firebase
-    addToast("Saved Successfully", { appearance: "success" });
+    addToast("Test toast", { appearance: "error" });
   };
 
   const handleFacebookLogin = () => {

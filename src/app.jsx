@@ -8,7 +8,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <ToastProvider>
+      <ToastProvider autoDismiss>
         <Switch>
           <PublicRoute
             exact
