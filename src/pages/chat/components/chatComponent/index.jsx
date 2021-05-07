@@ -3,10 +3,25 @@ import { Container, FormContainer, MessagesContainer } from "./styles";
 import { FaPaperPlane } from "react-icons/fa";
 import { useState } from "react";
 import { MessageItem } from "./messageItem";
+import { useEffect } from "react";
+import { useRef } from "react";
 
-export const ChatComponent = ({ handleSendMessage }) => {
+export const ChatComponent = ({ handleSendMessage, messages, ownUser }) => {
   const [messageText, setMessageText] = useState("");
   const [error, setError] = useState(false);
+  const messageContainerRef = useRef(null);
+
+  useEffect(() => {
+    if (messageContainerRef) {
+      messageContainerRef.current.addEventListener(
+        "DOMNodeInserted",
+        (event) => {
+          const { currentTarget: target } = event;
+          target.scroll({ top: target.scrollHeight, behavior: "smooth" });
+        }
+      );
+    }
+  }, [messageContainerRef]);
 
   const handleSubmitForm = (event) => {
     event.preventDefault();
@@ -21,9 +36,16 @@ export const ChatComponent = ({ handleSendMessage }) => {
 
   return (
     <Container>
-      <MessagesContainer>
-        <MessageItem />
-        <MessageItem isMine />
+      <MessagesContainer ref={messageContainerRef}>
+        {!!messages
+          ? Object.keys(messages).map((messageKey) => (
+              <MessageItem
+                key={messageKey}
+                message={messages[messageKey]}
+                isMine={ownUser?.email === messages[messageKey].email}
+              />
+            ))
+          : "Sem mensagens!"}
       </MessagesContainer>
 
       <FormContainer onSubmit={handleSubmitForm}>

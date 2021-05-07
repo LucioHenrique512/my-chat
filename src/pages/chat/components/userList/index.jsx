@@ -1,34 +1,24 @@
 import { Button } from "@material-ui/core";
 import { UserPicture } from "../../../../components";
-import {
-  Container,
-  Header,
-  UserItem,
-  UserList,
-  MainUser,
-  NoUsers,
-} from "./styles";
+import { Container, Header, UserList, MainUser } from "./styles";
 
-export const OnlineUsersList = () => {
-  const users = [
-    { name: "Some user", avatar_url: "https://i.pravatar.cc/200" },
-  ];
+export const OnlineUsersList = ({ handleClickLogout, user }) => {
   return (
     <Container>
       <Header>
         <h2>MyChat</h2>
         <MainUser>
-          <UserPicture picture_url="https://i.pravatar.cc/300" />
+          <UserPicture picture_url={user?.photoUrl} />
           <div className="info">
-            <h3>Nome do usuário</h3>
-            <Button size="small" color="primary">
+            <h3>{user?.name}</h3>
+            <Button size="small" color="primary" onClick={handleClickLogout}>
               Sair
             </Button>
           </div>
         </MainUser>
       </Header>
       <UserList>
-        {users.length !== 0 ? (
+        {/* {users.length !== 0 ? (
           users.map(({ name, avatar_url }, index) => (
             <UserItem key={index}>
               <UserPicture picture_url={avatar_url} />
@@ -41,7 +31,7 @@ export const OnlineUsersList = () => {
           <NoUsers>
             <h3>Nehum usuário logado.</h3>
           </NoUsers>
-        )}
+        )} */}
       </UserList>
     </Container>
   );
