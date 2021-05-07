@@ -9,7 +9,7 @@ import {
   NoUsers,
 } from "./styles";
 
-export const OnlineUsersList = () => {
+export const OnlineUsersList = ({ handleClickLogout, user }) => {
   const users = [
     { name: "Some user", avatar_url: "https://i.pravatar.cc/200" },
   ];
@@ -18,10 +18,10 @@ export const OnlineUsersList = () => {
       <Header>
         <h2>MyChat</h2>
         <MainUser>
-          <UserPicture picture_url="https://i.pravatar.cc/300" />
+          <UserPicture picture_url={user?.photoUrl} />
           <div className="info">
-            <h3>Nome do usuário</h3>
-            <Button size="small" color="primary">
+            <h3>{user?.name}</h3>
+            <Button size="small" color="primary" onClick={handleClickLogout}>
               Sair
             </Button>
           </div>

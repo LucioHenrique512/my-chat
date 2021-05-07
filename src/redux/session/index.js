@@ -1,7 +1,7 @@
 import { sessionActionsTypes } from "./actions";
 
 const INIT_STATE = {
-  session: null,
+  user: null,
 };
 
 const session = (previusState = INIT_STATE, action) => {
@@ -9,7 +9,7 @@ const session = (previusState = INIT_STATE, action) => {
     case sessionActionsTypes.SESSION_LOGIN:
       return {
         ...previusState,
-        session: action.payload,
+        user: action.payload,
       };
     case sessionActionsTypes.SESSION_LOGOUT:
       return INIT_STATE;

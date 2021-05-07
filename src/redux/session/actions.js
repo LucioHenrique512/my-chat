@@ -8,6 +8,6 @@ export const sessionLoginUser = (payload) => ({
   payload,
 });
 
-export const sessionLofoutUser = () => ({
+export const sessionLogoutUser = () => ({
   type: sessionActionsTypes.SESSION_LOGOUT,
 });
